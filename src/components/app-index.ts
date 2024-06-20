@@ -5,6 +5,7 @@ import { ElementController } from '@open-cells/element-controller';
 import { routes } from '../router/routes.js';
 import { styles } from './app-index.css.js';
 import './app-header.js';
+import './app-footer.js';
 
 startApp({
   routes,
@@ -23,6 +24,7 @@ export class AppIndex extends LitElement {
       <main role="main" tabindex="-1">
         <slot></slot>
       </main>
+      <app-footer></app-footer>
     `;
   }
 }
