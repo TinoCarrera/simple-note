@@ -4,7 +4,7 @@ import '@material/web/icon/icon.js';
 import '@material/web/iconbutton/outlined-icon-button.js';
 
 @customElement('app-header')
-export class AppIndex extends LitElement {
+export class AppHeader extends LitElement {
 
   static styles = css`
     header {
