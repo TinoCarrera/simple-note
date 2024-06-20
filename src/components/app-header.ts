@@ -16,14 +16,18 @@ export class AppHeader extends LitElement {
     .header-content {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       position: relative;
-      padding: 1rem 0;
     }
 
     a {
       text-decoration: none;
       color: #000000;
+    }
+
+    .right {
+      position: absolute;
+      right: 0;
     }
   `;
 
@@ -33,6 +37,7 @@ export class AppHeader extends LitElement {
         <div class="header-content">
           <h1><a href="#!/">Simple Note</a></h1>
           <md-outlined-icon-button
+            class="right"
             aria-label="Toggle language"
             @click=${() => this._toogleLanguage()}
           >
