@@ -2,8 +2,8 @@ import { html, LitElement } from 'lit';
 import { PageController } from '@open-cells/page-controller';
 import { customElement } from 'lit/decorators.js';
 
-@customElement('second-page')
-export class SecondPage extends LitElement {
+@customElement('login-page')
+export class LoginPage extends LitElement {
   pageController = new PageController(this);
 
   protected createRenderRoot(): HTMLElement | DocumentFragment {
