@@ -9,13 +9,15 @@
     "start": "vite",
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "npm run build && vite preview"
+    "preview": "npm run build && vite preview",
+    "start:api": "json-server api/db.json"
   },
   "dependencies": {
     "@material/web": "^1.5.0",
     "@open-cells/core": "^1.0.1",
     "@open-cells/element-controller": "^1.0.1",
     "@open-cells/page-controller": "^1.0.1",
+    "json-server": "^1.0.0-beta.1",
     "lit": "^3.0.0"
   },
   "devDependencies": {
