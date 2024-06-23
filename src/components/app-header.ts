@@ -1,11 +1,13 @@
 import { LitElement, html, css, nothing } from 'lit';
 import { PageController } from '@open-cells/page-controller';
 import { customElement, state } from 'lit/decorators.js';
+import { LocalizeMixin, setLang } from '@open-cells/localize';
 import '@material/web/icon/icon.js';
 import '@material/web/iconbutton/icon-button.js';
 
+// @ts-ignore
 @customElement('app-header')
-export class AppHeader extends LitElement {
+export class AppHeader extends LocalizeMixin(LitElement) {
   pageController = new PageController(this);
 
   static styles = css`
@@ -80,6 +82,6 @@ export class AppHeader extends LitElement {
   }
 
   _toogleLanguage() {
-    console.log('Toggle language');
+    setLang(this._intlConfig.lang === 'en' ? 'es' : 'en');
   }
 }
