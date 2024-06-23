@@ -22,7 +22,7 @@ export class AppHeader extends LitElement {
 
     a {
       text-decoration: none;
-      color: #000000;
+      color: var(--on-surface);
     }
 
     .right {

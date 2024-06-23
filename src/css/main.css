@@ -1,4 +1,6 @@
+@import url('./colors.css');
 @import url('./fonts.css');
+@import url('./material.css');
 @import url('./home.css');
 @import url('./login.css');
 
@@ -6,6 +8,10 @@ html,
 body {
   height: 100%;
   margin: 0;
-  background-color: #eeeeee;
+}
+
+body {
+  background-color: var(--surface);
   font-family: 'Roboto Serif', sans-serif;
+  color: var(--on-surface);
 }
