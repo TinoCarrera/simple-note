@@ -57,15 +57,10 @@ export class HomePage extends LitElement {
       <md-fab
         class="md-fab-fixed"
         aria-label="Create task"
-        @click="${() => this._navigateToTask()}"
+        @click="${() => this.pageController.navigate('task')}"
       >
         <md-icon slot="icon">add</md-icon>
       </md-fab>
     `;
-  }
-
-  _navigateToTask() {
-    this.pageController.publish('home', false);
-    this.pageController.navigate('task');
   }
 }

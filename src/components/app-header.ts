@@ -44,8 +44,8 @@ export class AppHeader extends LitElement {
   connectedCallback() {
     super.connectedCallback();
 
-    this.pageController.subscribe('home', (data: Boolean) => {
-      this._home = data;
+    this.pageController.subscribe('__oc_app', (appContext: any) => {
+      this._home = appContext.value.currentPage === 'home' ? true : false;
     });
   }
 
@@ -59,7 +59,7 @@ export class AppHeader extends LitElement {
                 <md-icon-button
                   class="left"
                   aria-label="Back to home"
-                  @click="${() => this._navigateToHome()}"
+                  @click="${() => this.pageController.navigate('home')}"
                 >
                   <md-icon>arrow_back</md-icon>
                 </md-icon-button>
@@ -81,10 +81,5 @@ export class AppHeader extends LitElement {
 
   _toogleLanguage() {
     console.log('Toggle language');
-  }
-
-  _navigateToHome() {
-    this.pageController.publish('home', true);
-    this.pageController.navigate('home');
   }
 }
