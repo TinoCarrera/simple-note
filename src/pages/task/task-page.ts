@@ -1,61 +1,52 @@
 import { html, LitElement } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
-import { map } from 'lit/directives/map.js';
+import { customElement } from 'lit/decorators.js';
+import { LocalizeMixin } from '@open-cells/localize';
 import '@material/web/textfield/outlined-text-field.js';
 import '@material/web/button/filled-button.js';
 import '@material/web/select/outlined-select.js';
 import '@material/web/select/select-option.js';
 
+// @ts-ignore
 @customElement('task-page')
-export class TaskPage extends LitElement {
+export class TaskPage extends LocalizeMixin(LitElement) {
   protected createRenderRoot(): HTMLElement | DocumentFragment {
+    // @ts-ignore
     return this;
   }
-
-  @property()
-  types: Type[] = [
-    {
-      "id": "1",
-      "name": "Mantenimiento"
-    },
-    {
-      "id": "2",
-      "name": "Limpieza"
-    },
-    {
-      "id": "3",
-      "name": "Recados"
-    }
-  ];
 
   render() {
     return html`
       <form class="form">
         <md-outlined-select>
           <md-select-option aria-label="blank" selected>
-            <div slot="headline">Selecciona el tipo</div>
+            <div slot="headline">${this.t('type-label-0')}</div>
           </md-select-option>
-          ${map(
-            this.types,
-            item => html`
-              <md-select-option value="${item.id}">
-                <div slot="headline">${item.name}</div>
-              </md-select-option>
-            `,
-          )}
+          <md-select-option value="1">
+            <div slot="headline">${this.t('type-label-1')}</div>
+          </md-select-option>
+          <md-select-option value="2">
+            <div slot="headline">${this.t('type-label-2')}</div>
+          </md-select-option>
+          <md-select-option value="3">
+            <div slot="headline">${this.t('type-label-3')}</div>
+          </md-select-option>
         </md-outlined-select>
 
-        <md-outlined-text-field label="Título">
+        <md-outlined-text-field label="${this.t('title-label')}">
         </md-outlined-text-field>
 
-        <md-outlined-text-field label="Descripción" type="textarea" rows="10">
+        <md-outlined-text-field
+          label="${this.t('description-label')}"
+          type="textarea"
+          rows="10"
+        >
         </md-outlined-text-field>
 
-        <md-outlined-text-field label='Etiquetas (separadas por ";", max 2)'>
+        <md-outlined-text-field label="${this.t('tag-label')}">
         </md-outlined-text-field>
 
         <md-filled-button @click="${() => this._onSubmit()}">
-          Crear
+          ${this.t('submit-button')}
         </md-filled-button>
       </form>
     `;

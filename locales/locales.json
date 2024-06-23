@@ -1,0 +1,22 @@
+{
+  "en": {
+    "type-label-0": "Select a type",
+    "type-label-1": "Maintenance",
+    "type-label-2": "Cleaning",
+    "type-label-3": "Errands",
+    "title-label": "Title",
+    "description-label": "Description",
+    "tag-label": "Tags (separated by \";\", max 2)",
+    "submit-button": "Create"
+  },
+  "es": {
+    "type-label-0": "Selecciona el tipo",
+    "type-label-1": "Mantenimiento",
+    "type-label-2": "Limpieza",
+    "type-label-3": "Recados",
+    "title-label": "Título",
+    "description-label": "Descripción",
+    "tag-label": "Etiquetas (separadas por \";\", max 2)",
+    "submit-button": "Crear"
+  }
+}
