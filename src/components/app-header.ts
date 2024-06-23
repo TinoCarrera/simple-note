@@ -1,6 +1,6 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css, nothing } from 'lit';
 import { PageController } from '@open-cells/page-controller';
-import { customElement } from 'lit/decorators.js';
+import { customElement, state } from 'lit/decorators.js';
 import '@material/web/icon/icon.js';
 import '@material/web/iconbutton/icon-button.js';
 
@@ -38,24 +38,39 @@ export class AppHeader extends LitElement {
     }
   `;
 
+  @state()
+  protected _home: Boolean = true;
+
+  connectedCallback() {
+    super.connectedCallback();
+
+    this.pageController.subscribe('home', (data: Boolean) => {
+      this._home = data;
+    });
+  }
+
   render() {
     return html`
       <header>
         <div class="header-content">
-          <md-icon-button
-            class="left"
-            aria-label="Back"
-            @click="${() => this.pageController.navigate('home')}"
-          >
-            <md-icon>arrow_back</md-icon>
-          </md-icon-button>
+          ${this._home
+            ? nothing
+            : html`
+                <md-icon-button
+                  class="left"
+                  aria-label="Back to home"
+                  @click="${() => this._navigateToHome()}"
+                >
+                  <md-icon>arrow_back</md-icon>
+                </md-icon-button>
+              `}
 
           <h4><a href="#!/">Simple Note</a></h4>
 
           <md-icon-button
             class="right"
             aria-label="Toggle language"
-            @click=${() => this._toogleLanguage()}
+            @click="${() => this._toogleLanguage()}"
           >
             <md-icon>language</md-icon>
           </md-icon-button>
@@ -66,5 +81,10 @@ export class AppHeader extends LitElement {
 
   _toogleLanguage() {
     console.log('Toggle language');
+  }
+
+  _navigateToHome() {
+    this.pageController.publish('home', true);
+    this.pageController.navigate('home');
   }
 }

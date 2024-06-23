@@ -10,6 +10,7 @@ import './app-footer.js';
 startApp({
   routes,
   mainNode: 'app-content',
+  viewLimit: 2,
 });
 
 @customElement('app-index')

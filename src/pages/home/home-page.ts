@@ -21,12 +21,9 @@ export class HomePage extends LitElement {
   connectedCallback() {
     super.connectedCallback();
 
-    this.pageController.subscribe(
-      'tasks',
-      (data: Task[]) => {
-        this._tasks = data;
-      },
-    );
+    this.pageController.subscribe('tasks', (data: Task[]) => {
+      this._tasks = data;
+    });
   }
 
   disconnectedCallback() {
@@ -60,10 +57,15 @@ export class HomePage extends LitElement {
       <md-fab
         class="md-fab-fixed"
         aria-label="Create task"
-        @click="${() => this.pageController.navigate('task')}"
+        @click="${() => this._navigateToTask()}"
       >
         <md-icon slot="icon">add</md-icon>
       </md-fab>
     `;
+  }
+
+  _navigateToTask() {
+    this.pageController.publish('home', false);
+    this.pageController.navigate('task');
   }
 }
