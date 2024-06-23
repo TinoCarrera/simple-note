@@ -16,3 +16,7 @@ body {
   font-family: 'Roboto Serif', sans-serif;
   color: var(--on-surface);
 }
+
+md-outlined-text-field {
+  margin-bottom: 10px;
+}
