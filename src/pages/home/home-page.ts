@@ -60,7 +60,7 @@ export class HomePage extends LitElement {
       <md-fab
         class="md-fab-fixed"
         aria-label="Create task"
-        @click="${() => this.pageController.navigate('login')}"
+        @click="${() => this.pageController.navigate('task')}"
       >
         <md-icon slot="icon">add</md-icon>
       </md-fab>

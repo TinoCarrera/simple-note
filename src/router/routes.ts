@@ -16,5 +16,13 @@ export const routes: RouteDefinition[] = [
     action: async () => {
       await import('../pages/login/login-page.js');
     },
-  }
+  },
+  {
+    path: '/task/add',
+    name: 'task',
+    component: 'task-page',
+    action: async () => {
+      await import('../pages/task/task-page.js');
+    },
+  },
 ];

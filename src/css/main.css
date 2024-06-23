@@ -3,6 +3,7 @@
 @import url('./material.css');
 @import url('./home.css');
 @import url('./login.css');
+@import url('./task.css');
 
 html,
 body {
