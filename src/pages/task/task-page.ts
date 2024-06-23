@@ -3,11 +3,9 @@ import { customElement } from 'lit/decorators.js';
 import '@material/web/textfield/outlined-text-field.js';
 import '@material/web/button/filled-button.js';
 
-// @ts-ignore
 @customElement('task-page')
 export class TaskPage extends LitElement {
   protected createRenderRoot(): HTMLElement | DocumentFragment {
-    // @ts-ignore
     return this;
   }
 

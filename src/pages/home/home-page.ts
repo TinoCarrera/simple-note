@@ -5,13 +5,11 @@ import { getAllTasks } from '../../components/tasks';
 import { map } from 'lit/directives/map.js';
 import '@material/web/fab/fab.js';
 
-// @ts-ignore
 @customElement('home-page')
 export class HomePage extends LitElement {
   pageController = new PageController(this);
 
   protected createRenderRoot(): HTMLElement | DocumentFragment {
-    // @ts-ignore
     return this;
   }
 
