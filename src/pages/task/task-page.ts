@@ -1,5 +1,6 @@
 import { html, LitElement } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
+import { map } from 'lit/directives/map.js';
 import '@material/web/textfield/outlined-text-field.js';
 import '@material/web/button/filled-button.js';
 import '@material/web/select/outlined-select.js';
@@ -11,6 +12,22 @@ export class TaskPage extends LitElement {
     return this;
   }
 
+  @property()
+  types: Type[] = [
+    {
+      "id": "1",
+      "name": "Mantenimiento"
+    },
+    {
+      "id": "2",
+      "name": "Limpieza"
+    },
+    {
+      "id": "3",
+      "name": "Recados"
+    }
+  ];
+
   render() {
     return html`
       <form class="form">
@@ -18,15 +35,14 @@ export class TaskPage extends LitElement {
           <md-select-option aria-label="blank" selected>
             <div slot="headline">Selecciona el tipo</div>
           </md-select-option>
-          <md-select-option value="0">
-            <div slot="headline">Mantenimiento</div>
-          </md-select-option>
-          <md-select-option value="1">
-            <div slot="headline">Limpieza</div>
-          </md-select-option>
-          <md-select-option value="2">
-            <div slot="headline">Recados</div>
-          </md-select-option>
+          ${map(
+            this.types,
+            item => html`
+              <md-select-option value="${item.id}">
+                <div slot="headline">${item.name}</div>
+              </md-select-option>
+            `,
+          )}
         </md-outlined-select>
 
         <md-outlined-text-field label="Título">

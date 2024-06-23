@@ -4,3 +4,8 @@ type Task = {
   description: string;
   tags: string[];
 };
+
+type Type = {
+  id: string;
+  name: string;
+};
