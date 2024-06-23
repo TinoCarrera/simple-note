@@ -1,6 +1,8 @@
 import { html, LitElement } from 'lit';
 import { PageController } from '@open-cells/page-controller';
-import { customElement } from 'lit/decorators.js';
+import { customElement, state } from 'lit/decorators.js';
+import { getAllTasks } from '../../components/tasks';
+import { map } from 'lit/directives/map.js';
 
 // @ts-ignore
 @customElement('home-page')
@@ -12,9 +14,49 @@ export class HomePage extends LitElement {
     return this;
   }
 
+  @state()
+  protected _tasks: Task[] | null = null;
+
+  connectedCallback() {
+    super.connectedCallback();
+
+    this.pageController.subscribe(
+      'tasks',
+      (data: Task[]) => {
+        this._tasks = data;
+      },
+    );
+  }
+
+  disconnectedCallback() {
+    this.pageController.unsubscribe('tasks');
+    super.disconnectedCallback();
+  }
+
+  async firstUpdated(props: any) {
+    super.firstUpdated?.(props);
+
+    if (!this._tasks) {
+      const tasks = await getAllTasks();
+      this.pageController.publish('tasks', tasks);
+    }
+  }
+
   render() {
     return html`
       <button @click="${() => this.pageController.navigate('login')}">Go to login page</button>
+
+      <div class="scroller">
+        ${map(
+          this._tasks || [],
+          item => html`
+            <div class="card">
+              <p>${item.title}</p>
+              <p>${item.description}</p>
+            </div>
+          `,
+        )}
+      </div>
     `;
   }
 }
