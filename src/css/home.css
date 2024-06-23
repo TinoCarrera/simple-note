@@ -12,3 +12,20 @@
   background-color: #ebe8d7;
   padding: 0 10px;
 }
+
+@media (min-width: 768px) {
+  .scroller {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .card {
+    width: 300px;
+  }
+}
+
+.md-fab-fixed {
+  position: fixed;
+  right: 20px;
+  bottom: 70px;
+}

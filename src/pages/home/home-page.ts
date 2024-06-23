@@ -3,6 +3,7 @@ import { PageController } from '@open-cells/page-controller';
 import { customElement, state } from 'lit/decorators.js';
 import { getAllTasks } from '../../components/tasks';
 import { map } from 'lit/directives/map.js';
+import '@material/web/fab/fab.js';
 
 // @ts-ignore
 @customElement('home-page')
@@ -44,8 +45,6 @@ export class HomePage extends LitElement {
 
   render() {
     return html`
-      <button @click="${() => this.pageController.navigate('login')}">Go to login page</button>
-
       <div class="scroller">
         ${map(
           this._tasks || [],
@@ -57,6 +56,14 @@ export class HomePage extends LitElement {
           `,
         )}
       </div>
+
+      <md-fab
+        class="md-fab-fixed"
+        aria-label="Create task"
+        @click="${() => this.pageController.navigate('login')}"
+      >
+        <md-icon slot="icon">add</md-icon>
+      </md-fab>
     `;
   }
 }
