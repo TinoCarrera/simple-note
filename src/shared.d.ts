@@ -5,8 +5,3 @@ type Task = {
   typeId: string;
   tags: string[];
 };
-
-type Type = {
-  id: string;
-  name: string;
-};
