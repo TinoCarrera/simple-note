@@ -48,7 +48,6 @@ export class LoginPage extends LocalizeMixin(LitElement) {
             <md-icon-button
               toggle
               slot="trailing-icon"
-              id="button-1"
               @click="${() => this._showPassword = !this._showPassword}"
             >
               <md-icon>visibility</md-icon>
