@@ -27,6 +27,7 @@ startApp({
       intercept = true;
       redirect = {page: 'home', params: {}};
     }
+    // localStorage.removeItem('_user');
     return {intercept, redirect};
   },
 });

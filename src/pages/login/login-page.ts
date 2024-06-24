@@ -12,7 +12,12 @@ export class LoginPage extends LitElement {
 
   render() {
     return html`
-      <button @click="${() => this.pageController.navigate('home')}">Go to home page</button>
+      <button @click="${() => this._onSubmit()}">Login</button>
     `;
+  }
+
+  _onSubmit() {
+    localStorage.setItem('_user', '123456789');
+    this.pageController.navigate('home');
   }
 }
