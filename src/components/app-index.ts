@@ -11,6 +11,24 @@ startApp({
   routes,
   mainNode: 'app-content',
   viewLimit: 2,
+  // @ts-ignore
+  interceptor: function (navigation, ctx) {
+    let intercept = false;
+    let redirect;
+    const user = localStorage.getItem('_user');
+    // @ts-ignore
+    if (!user && navigation.to.page !== 'login') {
+      console.log('login');
+      intercept = true;
+      redirect = {page: 'login', params: {}};
+    // @ts-ignore
+    } else if (user && navigation.to.page === 'login') {
+      console.log('home');
+      intercept = true;
+      redirect = {page: 'home', params: {}};
+    }
+    return {intercept, redirect};
+  },
 });
 
 @customElement('app-index')
