@@ -7,6 +7,7 @@ import '@material/web/fab/fab.js';
 import '@material/web/icon/icon.js';
 import '@material/web/iconbutton/icon-button.js';
 import '@material/web/divider/divider.js';
+import '@material/web/button/outlined-button.js';
 
 @customElement('home-page')
 export class HomePage extends LitElement {
@@ -56,7 +57,10 @@ export class HomePage extends LitElement {
               <md-divider></md-divider>
 
               <div class="card-footer">
-                <p>${item.tags[0]}</p>
+                <md-outlined-button trailing-icon>
+                  ${item.tags[0]}
+                  <md-icon slot="icon">close</md-icon>
+                </md-outlined-button>
 
                 <div class="card-actions">
                   <md-icon-button>
