@@ -41,13 +41,13 @@ export class AppHeader extends LocalizeMixin(LitElement) {
   `;
 
   @state()
-  protected _home: Boolean = true;
+  protected _backToHome: Boolean = false;
 
   connectedCallback() {
     super.connectedCallback();
 
     this.pageController.subscribe('__oc_app', (appContext: any) => {
-      this._home = appContext.value.currentPage === 'home' ? true : false;
+      this._backToHome = appContext.value.currentPage === 'task' ? true : false;
     });
   }
 
@@ -55,9 +55,8 @@ export class AppHeader extends LocalizeMixin(LitElement) {
     return html`
       <header>
         <div class="header-content">
-          ${this._home
-            ? nothing
-            : html`
+          ${this._backToHome
+            ? html`
                 <md-icon-button
                   class="left"
                   aria-label="Back to home"
@@ -65,7 +64,8 @@ export class AppHeader extends LocalizeMixin(LitElement) {
                 >
                   <md-icon>arrow_back</md-icon>
                 </md-icon-button>
-              `}
+              `
+            : nothing}
 
           <h4><a href="#!/">Simple Note</a></h4>
 
