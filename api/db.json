@@ -4,30 +4,35 @@
       "id": "1",
       "title": "Do the weekly grocery shopping",
       "description": "Buy necessary food and products for the week. Review the shopping list and ensure all basic items are included.",
+      "typeId": "1",
       "tags": ["shopping"]
     },
     {
       "id": "2",
       "title": "Take out the trash",
       "description": "Collect the trash from all bins in the house and take it to the appropriate outdoor container.",
+      "typeId": "2",
       "tags": ["Trash"]
     },
     {
       "id": "3",
       "title": "Clean the kitchen",
       "description": "Clean all surfaces in the kitchen, including countertops, sink, and appliances. Sweep and mop the floor.",
+      "typeId": "2",
       "tags": ["Kitchen"]
     },
     {
       "id": "4",
       "title": "Shop tools",
       "description": "I have to buy tools",
+      "typeId": "1",
       "tags": ["tools"]
     },
     {
       "id": "5",
       "title": "Do the course exercise",
       "description": "Do the exercise app with the Open Cells framework",
+      "typeId": "1",
       "tags": ["Open Cells"]
     }
   ]
