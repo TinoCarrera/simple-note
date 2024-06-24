@@ -34,7 +34,7 @@ export class HomePage extends LitElement {
 
     if (!this._tasks) {
       const tasks = await getAllTasks();
-      this.pageController.publish('tasks', tasks);
+      this.pageController.publish('tasks', tasks.reverse());
     }
   }
 
