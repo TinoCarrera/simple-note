@@ -63,6 +63,11 @@ export class LoginPage extends LocalizeMixin(LitElement) {
     `;
   }
 
+  _handleInput(ev: any) {
+    let { id, value } = ev.target;
+    this[id] = value;
+  }
+
   _onSubmit() {
     if (!this.user || !this.password) return;
 
@@ -73,10 +78,5 @@ export class LoginPage extends LocalizeMixin(LitElement) {
 
     localStorage.setItem('_user', '123456789');
     this.pageController.navigate('home');
-  }
-
-  _handleInput(ev: any) {
-    let { id, value } = ev.target;
-    this[id] = value;
   }
 }
