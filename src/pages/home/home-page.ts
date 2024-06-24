@@ -1,7 +1,7 @@
 import { html, LitElement } from 'lit';
 import { PageController } from '@open-cells/page-controller';
 import { customElement, state } from 'lit/decorators.js';
-import { getAllTasks } from '../../components/tasks';
+import { getAllTasks, deleteTask } from '../../components/tasks';
 import { map } from 'lit/directives/map.js';
 import '@material/web/fab/fab.js';
 import '@material/web/icon/icon.js';
@@ -63,7 +63,9 @@ export class HomePage extends LitElement {
                 </md-outlined-button>
 
                 <div class="card-actions">
-                  <md-icon-button>
+                  <md-icon-button
+                    @click="${() => this._deleteTask(item.id!)}"
+                  >
                     <md-icon>delete</md-icon>
                   </md-icon-button>
 
@@ -85,5 +87,13 @@ export class HomePage extends LitElement {
         <md-icon slot="icon">add</md-icon>
       </md-fab>
     `;
+  }
+
+  async _deleteTask(id: string) {
+    const response = await deleteTask(id);
+    console.log(response);
+
+    const tasks = await getAllTasks();
+    this.pageController.publish('tasks', tasks.reverse());
   }
 }

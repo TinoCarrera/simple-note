@@ -5,8 +5,15 @@ export const getAllTasks = async () => {
 
 export const createTask = async (data: Task) => {
   const response = await fetch('http://localhost:3000/tasks', {
-    method: "POST",
+    method: 'POST',
     body: JSON.stringify(data),
+  });
+  return response.json();
+}
+
+export const deleteTask = async (id: string) => {
+  const response = await fetch('http://localhost:3000/tasks/' + id, {
+    method: 'DELETE',
   });
   return response.json();
 }
