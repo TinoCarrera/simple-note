@@ -57,6 +57,7 @@ export class TaskPage extends LocalizeMixin(LitElement) {
       <form class="form">
         <md-outlined-select
           id="typeId"
+          value="${this.typeId}"
           @change=${(ev: any) => this._handleInput(ev)}
         >
           <md-select-option aria-label="blank" selected>
