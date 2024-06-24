@@ -3,7 +3,7 @@ import { PageController } from '@open-cells/page-controller';
 import { customElement, state } from 'lit/decorators.js';
 import { LocalizeMixin, setLang } from '@open-cells/localize';
 import '@material/web/icon/icon.js';
-import '@material/web/iconbutton/icon-button.js';
+import '@material/web/button/text-button.js';
 
 // @ts-ignore
 @customElement('app-header')
@@ -69,13 +69,15 @@ export class AppHeader extends LocalizeMixin(LitElement) {
 
           <h4><a href="#!/">Simple Note</a></h4>
 
-          <md-icon-button
+          <md-text-button
             class="right"
             aria-label="Toggle language"
+            trailing-icon
             @click="${() => this._toogleLanguage()}"
           >
-            <md-icon>language</md-icon>
-          </md-icon-button>
+            ${this._intlConfig?.lang}
+            <md-icon slot="icon">language</md-icon>
+          </md-text-button>
         </div>
       </header>
     `;

@@ -1,8 +1,7 @@
 html {
+  /* sys */
+  --md-sys-color-primary: var(--on-surface);
+
   /* fab */
   --md-fab-container-color: var(--surface);
-  --md-fab-icon-color: var(--on-surface);
-
-  /* icon-button */
-  --md-icon-button-icon-color: var(--on-surface);
 }
