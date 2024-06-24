@@ -4,4 +4,7 @@ html {
 
   /* fab */
   --md-fab-container-color: var(--surface);
+
+  /* divider */
+  --md-divider-color: var(--on-surface-variant);
 }

@@ -4,6 +4,9 @@ import { customElement, state } from 'lit/decorators.js';
 import { getAllTasks } from '../../components/tasks';
 import { map } from 'lit/directives/map.js';
 import '@material/web/fab/fab.js';
+import '@material/web/icon/icon.js';
+import '@material/web/iconbutton/icon-button.js';
+import '@material/web/divider/divider.js';
 
 @customElement('home-page')
 export class HomePage extends LitElement {
@@ -45,8 +48,26 @@ export class HomePage extends LitElement {
           this._tasks || [],
           item => html`
             <div class="card">
-              <p>${item.title}</p>
-              <p>${item.description}</p>
+              <div class="card-body">
+                <p>${item.title}</p>
+                <p>${item.description}</p>
+              </div>
+
+              <md-divider></md-divider>
+
+              <div class="card-footer">
+                <p>${item.tags[0]}</p>
+
+                <div class="card-actions">
+                  <md-icon-button>
+                    <md-icon>delete</md-icon>
+                  </md-icon-button>
+
+                  <md-icon-button>
+                    <md-icon>edit</md-icon>
+                  </md-icon-button>
+                </div>
+              </div>
             </div>
           `,
         )}

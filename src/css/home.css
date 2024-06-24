@@ -10,7 +10,6 @@
   border-radius: 10px;
   margin: 10px 20px;
   background-color: var(--surface-container);
-  padding: 0 10px;
 }
 
 @media (min-width: 768px) {
@@ -28,4 +27,15 @@
   position: fixed;
   right: 20px;
   bottom: 70px;
+}
+
+.card-body,
+.card-footer {
+  padding: 0 10px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
