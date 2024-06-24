@@ -1,6 +1,6 @@
 import { html, LitElement } from 'lit';
 import { PageController } from '@open-cells/page-controller';
-import { customElement, state } from 'lit/decorators.js';
+import { customElement, state, query } from 'lit/decorators.js';
 import { LocalizeMixin } from '@open-cells/localize';
 import '@material/web/textfield/outlined-text-field.js';
 import '@material/web/button/filled-button.js';
@@ -17,6 +17,10 @@ export class LoginPage extends LocalizeMixin(LitElement) {
     return this;
   }
 
+  // @ts-ignore
+  @query('form')
+  form: any;
+
   @state()
   protected user: string | null = null;
 
@@ -29,7 +33,7 @@ export class LoginPage extends LocalizeMixin(LitElement) {
   render() {
     return html`
       <div class="login-container">
-        <div class="login-form">
+        <form class="login-form">
           <md-outlined-text-field
             label="${this.t('user-label')}"
             id="user"
@@ -58,7 +62,7 @@ export class LoginPage extends LocalizeMixin(LitElement) {
           <md-filled-button @click="${() => this._onSubmit()}">
             ${this.t('login-button')}
           </md-filled-button>
-        </div>
+        </form>
       </div>
     `;
   }
@@ -66,6 +70,12 @@ export class LoginPage extends LocalizeMixin(LitElement) {
   _handleInput(ev: any) {
     let { id, value } = ev.target;
     this[id] = value;
+  }
+
+  _reset() {
+    this.form.reset();
+    this.user = null;
+    this.password = null;
   }
 
   _onSubmit() {
@@ -76,6 +86,7 @@ export class LoginPage extends LocalizeMixin(LitElement) {
     console.log(this.user);
     console.log(this.password);
 
+    this._reset();
     localStorage.setItem('_user', '123456789');
     this.pageController.navigate('home');
   }
