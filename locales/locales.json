@@ -1,5 +1,8 @@
 {
   "en": {
+    "user-label": "User",
+    "password-label": "Password",
+    "login-button": "Enter",
     "type-label-0": "Select a type",
     "type-label-1": "Maintenance",
     "type-label-2": "Cleaning",
@@ -10,6 +13,9 @@
     "submit-button": "Create"
   },
   "es": {
+    "user-label": "Usuario",
+    "password-label": "Contraseña",
+    "login-button": "Entrar",
     "type-label-0": "Selecciona el tipo",
     "type-label-1": "Mantenimiento",
     "type-label-2": "Limpieza",
