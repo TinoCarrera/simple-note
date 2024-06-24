@@ -10,7 +10,7 @@ import './app-footer.js';
 startApp({
   routes,
   mainNode: 'app-content',
-  viewLimit: 2,
+  viewLimit: 1,
   // @ts-ignore
   interceptor: function (navigation, ctx) {
     let intercept = false;
