@@ -1,6 +1,6 @@
 import { html, LitElement } from 'lit';
 import { PageController } from '@open-cells/page-controller';
-import { customElement, state, property } from 'lit/decorators.js';
+import { customElement, state, property, query } from 'lit/decorators.js';
 import { LocalizeMixin } from '@open-cells/localize';
 import { createTask, getAllTasks, getTask, editTask } from '../../components/tasks';
 import '@material/web/textfield/outlined-text-field.js';
@@ -17,6 +17,10 @@ export class TaskPage extends LocalizeMixin(LitElement) {
     // @ts-ignore
     return this;
   }
+
+  // @ts-ignore
+  @query('form')
+  form: any;
 
   @state()
   protected typeId: string | null = null;
@@ -112,6 +116,14 @@ export class TaskPage extends LocalizeMixin(LitElement) {
     this[id] = value;
   }
 
+  _reset() {
+    this.form.reset();
+    this.typeId = null;
+    this.title = null;
+    this.description = null;
+    this.tags = null;
+  }
+
   async _onSubmit() {
     if (!this.typeId || !this.title || !this.description) return;
 
@@ -140,6 +152,7 @@ export class TaskPage extends LocalizeMixin(LitElement) {
     const tasks = await getAllTasks();
     this.pageController.publish('tasks', tasks.reverse());
 
+    this._reset();
     this.pageController.navigate('home');
   }
 }
