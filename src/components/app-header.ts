@@ -47,7 +47,8 @@ export class AppHeader extends LocalizeMixin(LitElement) {
     super.connectedCallback();
 
     this.pageController.subscribe('__oc_app', (appContext: any) => {
-      this._backToHome = appContext.value.currentPage === 'task' ? true : false;
+      const page = appContext.value.currentPage;
+      this._backToHome = page === 'home' || page === 'login' ? false : true;
     });
   }
 
