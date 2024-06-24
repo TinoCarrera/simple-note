@@ -10,7 +10,8 @@
     "title-label": "Title",
     "description-label": "Description",
     "tag-label": "Tags (separated by \";\", max 2)",
-    "submit-button": "Create"
+    "create-button": "Create",
+    "edit-button": "Edit"
   },
   "es": {
     "user-label": "Usuario",
@@ -23,6 +24,7 @@
     "title-label": "Título",
     "description-label": "Descripción",
     "tag-label": "Etiquetas (separadas por \";\", max 2)",
-    "submit-button": "Crear"
+    "create-button": "Crear",
+    "edit-button": "Editar"
   }
 }

@@ -1,8 +1,8 @@
 import { html, LitElement } from 'lit';
 import { PageController } from '@open-cells/page-controller';
-import { customElement, state } from 'lit/decorators.js';
+import { customElement, state, property } from 'lit/decorators.js';
 import { LocalizeMixin } from '@open-cells/localize';
-import { createTask, getAllTasks } from '../../components/tasks';
+import { createTask, getAllTasks, getTask, editTask } from '../../components/tasks';
 import '@material/web/textfield/outlined-text-field.js';
 import '@material/web/button/filled-button.js';
 import '@material/web/select/outlined-select.js';
@@ -29,6 +29,28 @@ export class TaskPage extends LocalizeMixin(LitElement) {
 
   @state()
   protected tags: string | null = null;
+
+  @state()
+  protected _task: Boolean = false;
+
+  @property({ type: Object })
+  params: { taskId?: string } = {};
+
+  async updated(props: any) {
+    super.updated?.(props);
+
+    if (props.has('params') && this.params.taskId) {
+      const { taskId } = this.params;
+      const { typeId, title, description, tags } = await getTask(taskId);
+
+      this.typeId = typeId;
+      this.title = title;
+      this.description = description;
+      this.tags = tags.join('; ');
+
+      this._task = true;
+    }
+  }
 
   render() {
     return html`
@@ -78,7 +100,7 @@ export class TaskPage extends LocalizeMixin(LitElement) {
         </md-outlined-text-field>
 
         <md-filled-button @click="${() => this._onSubmit()}">
-          ${this.t('submit-button')}
+          ${this._task ? this.t('edit-button') : this.t('create-button')}
         </md-filled-button>
       </form>
     `;
@@ -106,8 +128,13 @@ export class TaskPage extends LocalizeMixin(LitElement) {
       tags: tags || [],
     }
 
-    const response = await createTask(data);
-    console.log(response);
+    if (this._task) {
+      const response = await editTask(this.params.taskId!, data);
+      console.log(response);
+    } else {
+      const response = await createTask(data);
+      console.log(response);
+    }
 
     const tasks = await getAllTasks();
     this.pageController.publish('tasks', tasks.reverse());

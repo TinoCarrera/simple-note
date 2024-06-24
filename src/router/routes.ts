@@ -19,7 +19,15 @@ export const routes: RouteDefinition[] = [
   },
   {
     path: '/task/add',
-    name: 'task',
+    name: 'task-add',
+    component: 'task-page',
+    action: async () => {
+      await import('../pages/task/task-page.js');
+    },
+  },
+  {
+    path: '/tasks/edit/:taskId',
+    name: 'task-edit',
     component: 'task-page',
     action: async () => {
       await import('../pages/task/task-page.js');

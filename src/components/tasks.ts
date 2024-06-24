@@ -17,3 +17,16 @@ export const deleteTask = async (id: string) => {
   });
   return response.json();
 }
+
+export const getTask = async (id: string) => {
+  const response = await fetch('http://localhost:3000/tasks/' + id);
+  return response.json();
+}
+
+export const editTask = async (id: string, data: Task) => {
+  const response = await fetch('http://localhost:3000/tasks/' + id, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+  });
+  return response.json();
+}

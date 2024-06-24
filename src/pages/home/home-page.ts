@@ -69,7 +69,9 @@ export class HomePage extends LitElement {
                     <md-icon>delete</md-icon>
                   </md-icon-button>
 
-                  <md-icon-button>
+                  <md-icon-button
+                    @click="${() => this._navigateToTaskEdit(item.id!)}"
+                  >
                     <md-icon>edit</md-icon>
                   </md-icon-button>
                 </div>
@@ -82,7 +84,7 @@ export class HomePage extends LitElement {
       <md-fab
         class="md-fab-fixed"
         aria-label="Create task"
-        @click="${() => this.pageController.navigate('task')}"
+        @click="${() => this.pageController.navigate('task-add')}"
       >
         <md-icon slot="icon">add</md-icon>
       </md-fab>
@@ -95,5 +97,9 @@ export class HomePage extends LitElement {
 
     const tasks = await getAllTasks();
     this.pageController.publish('tasks', tasks.reverse());
+  }
+
+  _navigateToTaskEdit(id: string) {
+    this.pageController.navigate('task-edit', { taskId: id })
   }
 }
